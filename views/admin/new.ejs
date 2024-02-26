@@ -1,0 +1,14 @@
+<form action="search" method="post">
+    <input type="text" name="search" placeholder="Input your book">
+    
+</form>
+<form action="submit" method="post">
+    <input type="text" name="id" value="<%= locals.id %>">
+    <input type="text" name="title" value="<%= locals.title %>">
+    <input type="text" name="lang" value="<%= locals.lang %>">
+    <input type="text" name="author" value="<%= locals.author %>">
+    <input type="text" name="publisher" value="<%= locals.publisher %>">
+    <input type="text" name="publish" value="<%= locals.publish %>">
+    <input type="text" name="img" value="<%= locals.img %>">
+    <button>POST</button>
+</form>
