@@ -1,8 +1,61 @@
-<% for(let item of book) {%>
-    <h1><%= item.title %></h1>
-    <h1><%= item.language %></h1>
-    <h1><%= item.author_name %></h1>
-    <h1><%= item.publisher %></h1>
-    <h1><%= item.publish %></h1>
-    <img src="<%= item.img %>" alt="">
-    <% } %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Noted - Free to use</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <header>
+        <h1 class="logo">Book Noted</h1>
+    </header>
+
+    <nav class="nav">
+        <ul class="items">
+            <li class="nav-item"><a href="/">Home</a></li>
+            <li class="nav-item"><a href="#">Search</a></li>
+            <li class="nav-item"><a href="#">Book</a></li>
+            <li class="nav-item"><a href="#">Genre</a></li>
+            <li class="nav-item"><a href="/admin">Admin Panel</a></li>
+        </ul>
+    </nav>
+
+    <div class="row">
+        <div class="main">
+            <aside class="side">
+                <div class="title-side">
+                    <h1>Top Book</h1>
+                </div>
+                <div class="main-side">
+                    <% for(let item of book) {%>
+                    <div class="side-item">
+                        <img src="<%= item.img %>" alt="">
+                        <p><%= item.title %></p>
+                    </div>
+                    <% } %>
+                </div>
+            </aside>
+            <main class="content">
+                <div class="title-main">
+                    <h1>Latest Book</h1>
+                </div>
+                <div class="main-content">
+                    <% for (let item of book) {%>
+                    <div class="main-item">
+                        <img src="<%= item.img %>" alt="">
+                        <div class="detail">
+                            <h1><%= item.title %></h1>
+                            <p><%= item.author_name %></p>
+                            <p><%= item.publisher %></p>
+                        </div>
+                    </div>
+                    <% } %>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

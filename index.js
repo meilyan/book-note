@@ -7,10 +7,10 @@ const port = 3000;
 const API_URL = "https://openlibrary.org/search.json"
 
 const db = new pg.Client({
-    user: "",
-    host: "",
-    database: "",
-    password: "",
+    user: "zcogjsdk",
+    host: "satao.db.elephantsql.com",
+    database: "zcogjsdk",
+    password: "IyYCsZMTnV_C_WFlmXU-qubbxRKmfyeE",
     port: 5432
 })
 db.connect();
@@ -41,12 +41,12 @@ app.post("/admin/search", async(req, res) => {
     const searchId = req.body.search;
     const searchResult = await axios.get(`${API_URL}?q=${searchId}`)
     res.render("admin/new.ejs", {
-        id: searchResult.data.docs[0].edition_key,
+        id: searchResult.data.docs[0].edition_key[0],
         title: searchResult.data.docs[0].title,
-        lang: searchResult.data.docs[0].language,
-        author: searchResult.data.docs[0].author_name,
-        publisher: searchResult.data.docs[0].publisher,
-        publish: searchResult.data.docs[0].publish_date,
+        lang: searchResult.data.docs[0].language[0],
+        author: searchResult.data.docs[0].author_name[0],
+        publisher: searchResult.data.docs[0].publisher[0],
+        publish: searchResult.data.docs[0].publish_date[0],
         img: searchResult.data.docs[0].cover_i
     });
 });
