@@ -1,17 +1,18 @@
 import express from "express";
 import axios from "axios";
 import pg from "pg";
+import env from "dotenv"
 
 const app = express();
 const port = 3000;
 const API_URL = "https://openlibrary.org/search.json"
 
 const db = new pg.Client({
-    user: "zcogjsdk",
-    host: "satao.db.elephantsql.com",
-    database: "zcogjsdk",
-    password: "IyYCsZMTnV_C_WFlmXU-qubbxRKmfyeE",
-    port: 5432
+    user: process.env.USER,
+    host: process.env.HOST,
+    database: process.env.DB,
+    password: process.env.PW,
+    port: process.env.PORT
 })
 db.connect();
 
@@ -21,7 +22,7 @@ app.use(express.static("public"));
 app.use(express.urlencoded({extended:true}));
 
 app.get("/", async(req, res) => {
-    const result = await db.query("SELECT * FROM books");
+    const result = await db.query("SELECT * FROM books ORDER BY id DESC");
     books = result.rows;
     console.log(books)
     res.render("index.ejs", {
